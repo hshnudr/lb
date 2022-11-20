@@ -1,5 +1,5 @@
 async function getUsers() {
-    let url = 'https://script.google.com/macros/s/AKfycbyTnMvAJSxE8Ie5G0lcv6AfrdvNHQ5CdMjo5ylWRxau_mufD-5--A4K2qprkn6P-aSY/exec';
+    let url = 'https://script.google.com/macros/s/AKfycbx7ClbYrdnlckhOp3CEvvkB9FbPlOBbeLOMJoO2XoggKE9YO_HCiwvS9B8EHX350Us/exec?action=read';
 	//let url = 'https://script.google.com/macros/s/AKfycbxFjga3suJ8oWtUWyLA1l-ApcU4laVeOf4MwLRtkMNsFWMy05V0KL1X12Y5KgyX_rw/exec'
     try {
         let res = await fetch(url);
@@ -13,7 +13,7 @@ async function getUsers() {
 async function renderUsers() {
     let users = await getUsers();
     let html = '';
-    users = (users['data']);
+    users = (users['records']);
 	users.forEach(user => {
         let htmlSegment = `<tr>
                             <td>${user.placeholder} : </td>
@@ -21,7 +21,7 @@ async function renderUsers() {
 							<td>
 								<div class="copy-text">
 									<a href="${user.link}">
-									<button>open</button>
+									<button>Open</button>
 									</a>
 								</div>
 							</td>
